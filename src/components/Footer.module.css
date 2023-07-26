@@ -1,0 +1,12 @@
+.footer {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #F4C754;
+    color: #BA1D86;
+}
+h3 {
+    margin-bottom: 5px;
+}
