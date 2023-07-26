@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Footer from './components/Footer';
@@ -10,6 +10,8 @@ import { AuthProvider } from './context/AuthContext';
 import { useEffect, useState } from 'react';
 import { useAuthentication } from './hooks/useAuthentication';
 import { onAuthStateChanged } from 'firebase/auth';
+import Createpost from './pages/CreatePost/Createpost';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 function App() {
   const [user, setUser] = useState(undefined)
@@ -39,8 +41,10 @@ function App() {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/about' element={<About />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/register' element={<Register />} />
+              <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
+              <Route path='/register' element={!user ? <Register /> : <Navigate to='/' />} />
+              <Route path='/posts/create' element={user ? <Createpost /> : <Navigate to='/login' />} />
+              <Route path='/dashboard' element={user ? <Dashboard /> : <Navigate to='/login' />} />
             </Routes>
           </div>
           <Footer />

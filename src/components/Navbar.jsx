@@ -16,10 +16,17 @@ const Navbar = () => {
                 </li>
                 {!user && (<>
                     <li>
-                        <NavLink to='/login' className={({ isActive }) => (isActive ? styles.active : '')}>Login</NavLink>
+                        <NavLink to='/login' className={({ isActive }) => (isActive ? styles.active : '')}>Entrar</NavLink>
                     </li>
                     <li>
                         <NavLink to='/register' className={({ isActive }) => (isActive ? styles.active : '')}>Cadastre-se</NavLink>
+                    </li></>)}
+                {user && (<>
+                    <li>
+                        <NavLink to='/posts/create' className={({ isActive }) => (isActive ? styles.active : '')}>Novo Post</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/dashboard' className={({ isActive }) => (isActive ? styles.active : '')}>Dashboard</NavLink>
                     </li></>)}
                 <li>
                     <NavLink to='/about' className={({ isActive }) => (isActive ? styles.active : '')}>Sobre</NavLink>
