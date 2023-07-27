@@ -1,5 +1,5 @@
 body {
-  background-color: #faf7e0;
+  background-color: #f1ecc7;
   padding: 0;
   margin: 0;
   font-family: 'Montserrat Alternates', sans-serif;
@@ -14,6 +14,7 @@ a, nav button {
   text-decoration: none;
   background-color: transparent;
   border: none;
+  border-radius: 10px;
   transition: .4s;
   font-size: 1em;
   cursor: pointer;
@@ -21,7 +22,7 @@ a, nav button {
 }
 
 a:hover, nav button:hover {
-  color: #fff;
+  color: #f1ecc7;
 }
 
 input::placeholder{
@@ -74,9 +75,8 @@ input, textarea {
 
 .btn.btn-outline {
   background-color: transparent;
-  border-radius: 0;
+  border-radius: 10px;
   columns: #000;
-  border: 1px solid #000;
   padding: 7px 30px;
 }
 .btn:hover {
@@ -85,12 +85,26 @@ input, textarea {
 }
 
 .btn.btn-outline:hover {
-  background-color: #000;
+  background-color: #f3b416;
 }
 
 .btn.btn-danger:hover {
   background-color: #DC3545;
   color: #fff;
+}
+.btn-menor {
+  background-color: #f4c754ea;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 10px;
+  width: 60px;
+  padding: 10px 15px;
+  border: none;
+  font-size: 1em;
+
+}
+.btn-menor:hover{
+  background-color: #f3b416;
 }
 
 button[disabled] {

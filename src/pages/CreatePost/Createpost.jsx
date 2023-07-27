@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from './CreatePost.module.css';
 import { useInsertDocument } from '../../hooks/useInsertDocuments';
 import { useAuthValue } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom'
 
 const Createpost = () => {
   const [title, setTitle] = useState('')
@@ -13,7 +14,7 @@ const Createpost = () => {
   const { user } = useAuthValue()
   const { insertDocument, response } = useInsertDocument('posts')
 
-
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -29,20 +30,27 @@ const Createpost = () => {
 
     //criar o array de tags
 
+    const tagsArray = tags.split(',').map((tag) => tag.trim().toLowerCase())
+
     // checar todos os valores
 
-    if(formError) return;
+    if (!title || !image || !tags || !body) {
+      setFormError('Por favor, preencha todos os campos!')
+    }
+
+    if (formError) return;
 
     insertDocument({
       title,
       image,
       body,
-      tags,
+      tagsArray,
       uid: user.uid,
       createdBy: user.displayName
     })
 
     // redirect p/ home page
+    navigate ('/')
   }
 
   return (
