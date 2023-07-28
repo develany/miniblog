@@ -29,7 +29,7 @@ export const useFecthDocuments = (docCollection, search = null, uid = null) => {
                 if (search) {
                     q = await query(
                         collectionRef,
-                        where('tags', 'array-contains', search),
+                        where('tagsArray', 'array-contains', search),
                         orderBy('createdAt', 'desc'))
                 } else {
                     q = await query(collectionRef, orderBy('createdAt', 'desc'))
@@ -51,8 +51,9 @@ export const useFecthDocuments = (docCollection, search = null, uid = null) => {
                 console.log(error)
                 setError(error.message)
 
-                setLoading(false)
+               
             }
+            setLoading(false)
         }
 
         loadData()
