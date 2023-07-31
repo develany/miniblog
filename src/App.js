@@ -4,8 +4,6 @@ import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
-import Login from './pages/Login/Login';
-import Register from './pages/Register/Register';
 import { AuthProvider } from './context/AuthContext';
 import { useEffect, useState } from 'react';
 import { useAuthentication } from './hooks/useAuthentication';
@@ -13,6 +11,9 @@ import { onAuthStateChanged } from 'firebase/auth';
 import Createpost from './pages/CreatePost/Createpost';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Search from './pages/Search/Search';
+import Post from './pages/Post/Post';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
 
 function App() {
   const [user, setUser] = useState(undefined)
@@ -43,6 +44,7 @@ function App() {
               <Route path='/' element={<Home />} />
               <Route path='/about' element={<About />} />
               <Route path='/search' element={<Search />} />
+              <Route path='/posts/:id' element={<Post />} />
               <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
               <Route path='/register' element={!user ? <Register /> : <Navigate to='/' />} />
               <Route path='/posts/create' element={user ? <Createpost /> : <Navigate to='/login' />} />
